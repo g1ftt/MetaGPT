@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant Main
+    participant Calculator
+
+    User->>Main: Run the calculator
+    Main->>User: Display welcome message and options
+    User->>Main: Choose an operation
+    Main->>User: Prompt for input numbers
+    User->>Main: Enter the numbers
+    Main->>Calculator: Perform the selected operation
+    Calculator->>Main: Return the result
+    Main->>User: Display the result
+    User->>Main: Choose to continue or exit
+    Main->>User: Repeat the process or exit
