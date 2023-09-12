@@ -149,7 +149,6 @@ allure-results
 .vscode
 
 
-*.txt
 docs/scripts/set_env.sh
 key.yaml
 output.json
@@ -159,7 +158,6 @@ data.ms
 examples/nb/
 .chroma
 *~$*
-*.mmd
 tmp
 output.wav
 metagpt/roles/idea_agent.py
