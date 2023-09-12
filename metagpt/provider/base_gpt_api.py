@@ -32,11 +32,13 @@ class BaseGPTAPI(BaseChatbot):
         return self._system_msg(self.system_prompt)
 
     def ask(self, msg: str) -> str:
+        time.sleep(20)
         message = [self._default_system_msg(), self._user_msg(msg)]
         rsp = self.completion(message)
         return self.get_choice_text(rsp)
 
     async def aask(self, msg: str, system_msgs: Optional[list[str]] = None) -> str:
+        time.sleep(20)
         if system_msgs:
             message = self._system_msgs(system_msgs) + [self._user_msg(msg)]
         else:
@@ -50,8 +52,10 @@ class BaseGPTAPI(BaseChatbot):
         return "\n".join([i["content"] for i in context if i["role"] == "assistant"])
 
     def ask_batch(self, msgs: list) -> str:
+        time.sleep(20)
         context = []
         for msg in msgs:
+            time.sleep(20)
             umsg = self._user_msg(msg)
             context.append(umsg)
             rsp = self.completion(context)
@@ -61,6 +65,7 @@ class BaseGPTAPI(BaseChatbot):
 
     async def aask_batch(self, msgs: list) -> str:
         """Sequential questioning"""
+        time.sleep(20)
         context = []
         for msg in msgs:
             umsg = self._user_msg(msg)
@@ -70,11 +75,13 @@ class BaseGPTAPI(BaseChatbot):
         return self._extract_assistant_rsp(context)
 
     def ask_code(self, msgs: list[str]) -> str:
+        time.sleep(20)
         """FIXME: No code segment filtering has been done here, and all results are actually displayed"""
         rsp_text = self.ask_batch(msgs)
         return rsp_text
 
     async def aask_code(self, msgs: list[str]) -> str:
+        time.sleep(20)
         """FIXME: No code segment filtering has been done here, and all results are actually displayed"""
         rsp_text = await self.aask_batch(msgs)
         return rsp_text
